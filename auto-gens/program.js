@@ -86,7 +86,8 @@ module.exports.Program = {
       "@react-native-community/async-storage",
       "react-native-gesture-handler",
       "react-native-safe-area-context",
-      "@react-native-community/masked-view"
+      "@react-native-community/masked-view",
+      "redux-thunk"
     ];
 
     const { name, icons } = this.answers;

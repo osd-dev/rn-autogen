@@ -1,2 +1,2 @@
-import * as sensorActions from './sensor.actions';
-export default {...sensorActions};
+import * as userActions from './user.action';
+export const Actions = {...userActions};

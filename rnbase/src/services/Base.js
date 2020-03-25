@@ -1,4 +1,3 @@
-import {Config} from '@/commons';
 import qs from 'qs';
 import axios from 'axios';
 
@@ -16,8 +15,9 @@ const defaultOptions = {
 
 export const getFn = (url, params, options) => {
   return new Promise((resolve, reject) => {
+    console.log(url);
     instance
-      .get(Config.apiUrl + url, {
+      .get(url, {
         ...defaultOptions,
         params,
         paramsSerializer: params => {
@@ -25,9 +25,7 @@ export const getFn = (url, params, options) => {
         },
         ...options,
       })
-      .then(({data}) => {
-        resolve(data);
-      })
+      .then(({data}) => resolve(data))
       .catch(error => {
         if (error.response !== undefined) {
           reject(error.response.data.message);
@@ -41,7 +39,7 @@ export const getFn = (url, params, options) => {
 export const postFn = (url, body, options) => {
   return new Promise((resolve, reject) => {
     instance
-      .post(Config.apiUrl + url, body, {
+      .post(url, body, {
         ...defaultOptions,
         ...options,
       })
@@ -61,7 +59,7 @@ export const postFn = (url, body, options) => {
 export const putFn = (url, body, options) => {
   return new Promise((resolve, reject) => {
     instance
-      .put(Config.apiUrl + url, body, {
+      .put(url, body, {
         ...defaultOptions,
         ...options,
       })
@@ -81,7 +79,7 @@ export const putFn = (url, body, options) => {
 export const deleteFn = (url, options) => {
   return new Promise((resolve, reject) => {
     instance
-      .delete(Config.apiUrl + url, {
+      .delete(url, {
         ...defaultOptions,
         ...options,
       })
